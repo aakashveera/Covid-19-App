@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: flask-app-deployment
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: flask
+
+  template:
+    metadata:
+      labels:
+        component: flask
+    spec:
+      containers:
+        - name: flask-app
+          image: covid-19
+          ports:
+            - containerPort: 5000

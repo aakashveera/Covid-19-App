@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>COVID-19 Predictor</title>
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+	
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>COVID PREDICTOR</h1>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="container">
+
+			<div class="col-lg-6 col-md-8">
+			    <form method="post" enctype="multipart/form-data" action="http://127.0.0.1:5000/predict">
+			     
+			        <div class="form-group files">
+			            <label>Upload the Image File (Accepted Formats - JPG, JPEG, PNG)</label>
+			            <input name="img" id="file" type="file"
+			            	onchange="return fileValidation()" class="form-control" required>
+			        </div>
+
+			        <button style="float: right" class="btn btn-primary">Submit</button>
+			      
+			    </form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<script> 
+		function fileValidation() { 
+			var fileInput = 
+				document.getElementById('file'); 
+			
+			var filePath = fileInput.value; 
+		
+			var allowedExtensions = 
+					/(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+			
+			if (!allowedExtensions.exec(filePath)) { 
+				alert('Invalid file type'); 
+				fileInput.value = ''; 
+				return false; 
+			} 
+
+		} 
+	</script> 
+</body>
+</html>
