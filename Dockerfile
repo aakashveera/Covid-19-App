@@ -5,7 +5,7 @@ WORKDIR '/app'
 RUN pip install Flask
 RUN pip install numpy
 RUN pip install opencv-python
-RUN pip install torch==1.7.0
+RUN pip install torch
 RUN pip install torchvision
 RUN pip install efficientnet-pytorch
 
