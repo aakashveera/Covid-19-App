@@ -12,7 +12,7 @@ from efficientnet_pytorch import EfficientNet
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda:0" if use_cuda else "cpu")
 
-print(os.listdir())
+torch.manual_seed(42)
 
 model = EfficientNet.from_pretrained('efficientnet-b3',weights_path='weight.pt', num_classes=2)
 model.to(device)
@@ -43,7 +43,9 @@ def file_upload():
 
 		img = transform(cv2.imread(filename)).to(device)
 		img = img.unsqueeze_(0)
-		label = model(img).data.numpy().argmax()
+		
+		with torch.no_grad():
+			label = model(img).data.numpy().argmax()
 
 		print(label)
 
