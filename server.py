@@ -57,7 +57,7 @@ def file_upload():
 		return redirect(url_for(".result"))
 
 	if request.method== 'GET':
-		return redirect(url_for(".result"))
+		return redirect(url_for(".home"))
 
 @app.route('/result', methods = ['POST','GET'])
 def result():
@@ -67,6 +67,6 @@ def result():
 		print(request.method)
 		return render_template("result.html", data=[result])
 	except:
-		return redirect(url_for("."))
+		return redirect(url_for(".home"))
 
 app.run(host ='0.0.0.0', port = 5000,debug=True)
