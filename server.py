@@ -8,15 +8,17 @@ import torch
 import numpy as np
 import torchvision.transforms as transforms
 from efficientnet_pytorch import EfficientNet
+from torch.autograd import Variable
 
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda:0" if use_cuda else "cpu")
 
 torch.manual_seed(42)
 
-model = EfficientNet.from_pretrained('efficientnet-b3',weights_path='weight.pt', num_classes=2)
+model = torch.load("model.pt",map_location='cpu')
 model.to(device)
 model.eval()
+
 transform = transforms.Compose([
         transforms.ToPILImage(),
         transforms.Resize(224),       
@@ -41,11 +43,12 @@ def file_upload():
 		filename = werkzeug.utils.secure_filename(files_get.filename)
 		files_get.save(filename)
 
-		img = transform(cv2.imread(filename)).to(device)
-		img = img.unsqueeze_(0)
+		img = transform(cv2.imread(filename)).unsqueeze_(0)
+		input = Variable(img)
+		input = input.to(device)
 		
 		with torch.no_grad():
-			label = model(img).data.numpy().argmax()
+			label = model(input).data.numpy().argmax()
 
 		print(label)
 
