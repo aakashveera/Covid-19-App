@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: covid-19
+          image: aakashveera/covid-19
           ports:
             - containerPort: 5000
