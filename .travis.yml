@@ -13,9 +13,9 @@ before_install:
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
-  - gcloud config set project covid-19-app-308613
+  - gcloud config set project flask-309309
   - gcloud config set compute/zone us-central1-c
-  - gcloud container clusters get-credentials covid-19
+  - gcloud container clusters get-credentials cluster-1
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 deploy:
