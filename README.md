@@ -1,4 +1,4 @@
-# Covid-19 Classification App
+# COVID-19 CLASSIFICATION APP
 
 This repo consists of Covid-19 Classification Web App which classifies Covid +ve/-ve with Chest X-ray Image created using Python Flask and Deep learning(Pytorch Library).
 
